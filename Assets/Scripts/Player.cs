@@ -31,10 +31,13 @@ public class Player : Agent, IWeaponized
 
     public override void Death()
     {
-        //base.Death();
-        animator.SetTrigger("Death");
-        gameObject.SetActive(false);
+        base.Death();
         weaponContainer.SetActive(false);
+    }
+    public new void DeathDone()
+    {
+        isDying = false;
+        gameObject.SetActive(false);
     }
 
     public void Attack()
