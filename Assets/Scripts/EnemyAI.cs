@@ -9,6 +9,10 @@ public class EnemyAI : MonoBehaviour
     public Transform[] spots;
     public float timeToWait = 3;
 
+    public PlayerController player;
+    public float chaseDistanceThreshold = 6f;
+    public float attackDistanceThreshod = 2f;
+
     private float waitTime;
     private Vector2 randomSpot;
 
@@ -27,18 +31,48 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        enemy.MoveTo(randomSpot);
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
+        if (player.isActiveAndEnabled && distanceToPlayer < chaseDistanceThreshold)
+        {
+            Chase(distanceToPlayer);
+        } else
+        {
+            Patrol();
+        }
+        
+    }
+
+    private void Patrol()
+    {
+        
         if (Vector2.Distance(transform.position, randomSpot) < 0.1)
         {
+            enemy.Move(Vector2.zero);
             if (waitTime <= 0)
             {
                 randomSpot = spots[Random.Range(0, spots.Length)].position;
                 waitTime = timeToWait;
-            } else
+            }
+            else
             {
                 waitTime -= Time.deltaTime;
             }
+        } else
+        {
+            enemy.Move((randomSpot - (Vector2)transform.position).normalized);
+        }
+    }
+
+    private void Chase(float distanceToPlayer)
+    {
+        if (distanceToPlayer < attackDistanceThreshod)
+        {
+            enemy.Attack();
+        }
+        else
+        {
+            enemy.Move((player.transform.position - transform.position).normalized);
         }
     }
 
