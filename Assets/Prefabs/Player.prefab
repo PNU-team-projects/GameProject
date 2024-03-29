@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 429576333532772455}
   - component: {fileID: 4908587481475648995}
   - component: {fileID: 7760884230113666338}
+  - component: {fileID: 1144665255881903829}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -190,10 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2fdd9b1cb50e243afd7012ddd46a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponContainer: {fileID: 7347795810273084507}
-  moveSpeed: 3
-  <hp>k__BackingField: 3
-  knockbackTime: 0.2
 --- !u!114 &7760884230113666338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +205,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMat: {fileID: 2100000, guid: 52caf0043a5a9e84784c3c788773ff13, type: 2}
   flashTime: 0.2
+--- !u!114 &1144665255881903829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861879057671606914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5a11736766a1748bc6fc8eb8d255fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <speed>k__BackingField: 6
+  <hp>k__BackingField: 3
+  knockbackTime: 0.2
+  weaponContainer: {fileID: 7347795810273084507}
 --- !u!1 &7347795810273084507
 GameObject:
   m_ObjectHideFlags: 0

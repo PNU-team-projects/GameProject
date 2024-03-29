@@ -3,24 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IWeapon
+public class MeleeWeapon: MonoBehaviour, IWeapon
 {
 
     [field: SerializeField] public float knockBackForce { get; set; }
     [field: SerializeField] public int damage { get; set; }
-    [SerializeField] public GameObject hitCollider;
+    [SerializeField] public DamageSource hitCollider;
 
 
     private Animator animator;
-    private DamageSource damageSource;
 
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        damageSource = hitCollider.GetComponent<DamageSource>();
-
-        damageSource.damageEvent += OnDamage;
+        hitCollider.damageEvent += OnDamage;
     }
 
 
@@ -30,12 +27,12 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void ActivateHitCollider()
     {
-        hitCollider.SetActive(true);
+        hitCollider.gameObject.SetActive(true);
     }
 
     public void AttackDone()
     {
-        hitCollider.SetActive(false);
+        hitCollider.gameObject.SetActive(false);
     }
 
     private void OnDamage(IDamageable damageable) {

@@ -9,7 +9,6 @@ public interface IDamageable
 
     void TakeDamage(int damage);
     void GetKnockBack(float force, Transform source);
-
     void Death();
 
 }

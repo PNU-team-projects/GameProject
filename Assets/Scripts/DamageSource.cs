@@ -14,7 +14,7 @@ public class DamageSource : MonoBehaviour
 
         if (damageable != null)
         {
-            damageEvent.Invoke(damageable);
+            damageEvent?.Invoke(damageable);
         }
     }
 

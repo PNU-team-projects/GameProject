@@ -92,7 +92,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.8333333
-    functionName: Death
+    functionName: DeathDone
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 92cf2d11b77c8fc4e8321c936ec4d148, type: 3}
     floatParameter: 0

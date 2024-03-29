@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948f9807a2a7a97418d0f836f309bf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <knockBackForce>k__BackingField: 0
-  <damage>k__BackingField: 0
-  hitCollider: {fileID: 5087611506249466237}
+  <knockBackForce>k__BackingField: 15
+  <damage>k__BackingField: 1
+  hitCollider: {fileID: 8483479171488372752}
 --- !u!1 &5087611506249466237
 GameObject:
   m_ObjectHideFlags: 0
