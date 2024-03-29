@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: weaponContainer
       value: 
       objectReference: {fileID: 812189736}
+    - target: {fileID: 5020607814138809407, guid: 3090ea5041877a842a59b5abb2480890, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5055141651033590274, guid: 3090ea5041877a842a59b5abb2480890, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -851,6 +855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orc
       objectReference: {fileID: 0}
+    - target: {fileID: 6058075027517927215, guid: a4f9954a26d03c144bc6710ffea55dad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7631906863671749615, guid: a4f9954a26d03c144bc6710ffea55dad, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -871,6 +879,14 @@ PrefabInstance:
     - target: {fileID: 700553059969513370, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
       propertyPath: <speed>k__BackingField
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502250769193937238, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
+      propertyPath: <damage>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502250769193937238, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
+      propertyPath: <knockBackForce>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1588558443523698984, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
       propertyPath: player
@@ -1006,6 +1022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrcWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 4952634937329613758, guid: 92e08c54eb954544b88cabecd9bb3167, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7289064018329830324, guid: 92e08c54eb954544b88cabecd9bb3167, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.21
@@ -1100,9 +1120,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4010392589254510352, guid: 4ab8b606c2c410249b0160b600ebca91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778362178367943000, guid: 4ab8b606c2c410249b0160b600ebca91, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778362178367943000, guid: 4ab8b606c2c410249b0160b600ebca91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7501748934936309587, guid: 4ab8b606c2c410249b0160b600ebca91, type: 3}
       propertyPath: player
