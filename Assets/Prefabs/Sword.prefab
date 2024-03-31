@@ -145,9 +145,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingLayerID: 82009891
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2067898546876541913, guid: 1b1f5964b5f97e44086477929220749b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4811949078600550455}
   - component: {fileID: 2937628944243856038}
   - component: {fileID: 2188866603416541663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,9 +399,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 82009891
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 4785893250104691602, guid: 64ef5ed15cf28e54db7f2fa611ce2bed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -485,9 +485,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 82009891
+  m_SortingLayer: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 4785893250104691602, guid: 64ef5ed15cf28e54db7f2fa611ce2bed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
