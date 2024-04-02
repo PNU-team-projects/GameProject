@@ -5,26 +5,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
+
+    public static PlayerController Instance { get; private set; }
 
     private PlayerControls playerControls;
+    private Player player;
     private Vector2 movement;
-    private Rigidbody2D rb;
-
-    private Animator myAnimator;
-    private SpriteRenderer mySpriteRender;
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         playerControls = new PlayerControls();
-        rb = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-        mySpriteRender = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+    }
+
+    private void Start()
+    {
+        playerControls.Combat.Attack.started += _ => player.Attack();
     }
 
     private void Update()
@@ -34,34 +45,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        AdjustPlayerFacingDirection();
-        Move();
+        player.Move(movement);
     }
 
     private void PlayerInput() {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
-
-        myAnimator.SetFloat("moveX", movement.x);
-        myAnimator.SetFloat("moveY", movement.y);
-
     }
 
-    private void Move()
-    {
-        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
-    }
-
-
-    private void AdjustPlayerFacingDirection() {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
-
-        if (mousePos.x < playerScreenPoint.x) {
-            mySpriteRender.flipX = true;
-        }
-        else
-        {
-            mySpriteRender.flipX = false;
-        }
-    }
 }

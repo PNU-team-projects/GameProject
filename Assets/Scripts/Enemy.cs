@@ -3,53 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Agent, IWeaponized
 {
-    public float moveSpeed = 2f;
+    [field: SerializeField] public IWeapon activeWeapon { get; set; }
+    [SerializeField] private GameObject weaponContainer;
 
-    private Vector2 pointToMove;
 
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
-    
-
-    private void Awake()
+    private new void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        base.Awake();
+        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
     }
 
-    private void FixedUpdate()
+    public override void Death()
     {
-        AdjustPlayerFacingDirection();
-        Move();
+        base.Death();
+        weaponContainer.SetActive(false);
     }
 
-    public void MoveTo(Vector2 targetPosition)
+    public void Attack()
     {
-        pointToMove = targetPosition;
-    }
-
-    private void AdjustPlayerFacingDirection()
-    {
-
-        if (transform.position.x < pointToMove.x) {
-            spriteRenderer.flipX = false;
-
-        } else if (transform.position.x > pointToMove.x)
-        {
-            spriteRenderer.flipX = true;
-        }
-    }
-
-    private void Move()
-    {
-        animator.SetFloat("moveX", transform.position.x - pointToMove.x);
-        animator.SetFloat("moveY", transform.position.y - pointToMove.y);
-
-        Vector2 newPosition = Vector2.MoveTowards(transform.position, pointToMove, Time.deltaTime * moveSpeed);
-        rb.MovePosition(newPosition);
+        activeWeapon.Attack();
     }
 }
