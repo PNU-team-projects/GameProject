@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7798637672878901508}
   - component: {fileID: 2309585426910834221}
+  - component: {fileID: 3089554828768870027}
   - component: {fileID: 4281140201437995284}
   - component: {fileID: 7368319766475742250}
   - component: {fileID: 1621433367598525127}
@@ -111,8 +112,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 82009891
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -155504416, guid: 0102c992747f83344a07466ba68a2b5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -125,6 +126,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3089554828768870027
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435703555482450272}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.12761855, y: -0.9016525}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.0123429, y: 0.19669497}
+  m_EdgeRadius: 0
 --- !u!70 &4281140201437995284
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,7 +202,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -228,7 +275,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   timeToWait: 3
-  player: {fileID: 0}
+  player: {fileID: 5187658463096511664, guid: 77f33d8f6d0316144b37d3a4a2ec76be, type: 3}
   chaseDistanceThreshold: 6
   attackDistanceThreshod: 2
 --- !u!114 &700553059969513370
