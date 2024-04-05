@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class Agent : MonoBehaviour, IMovable, IDamageable
 {
+    public int maxHP = 3;
     [field: SerializeField] public float speed { get; set; } = 2f;
-    [field: SerializeField] public int hp { get; set; } = 3;
+
+    [SerializeField] private int currentHP;
     [SerializeField] protected float knockbackTime = 0.2f;
 
     protected bool isDying { get; set; }
@@ -21,6 +23,8 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         flashEffect = GetComponent<FlashEffect>();
+
+        currentHP = maxHP;
     }
 
     public void Move(Vector2 movement)
@@ -46,11 +50,28 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
         }
     }
 
+    public int GetCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public void AddHP(int hpToAdd)
+    {
+        int diff = maxHP - currentHP;
+        if (diff >= hpToAdd)
+        {
+            currentHP += hpToAdd;
+        } else
+        {
+            currentHP += diff;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (isDying) return;
 
-        hp -= damage;
+        currentHP -= damage;
         StartCoroutine(flashEffect.Perform(DetectDeath));
     }
 
@@ -74,7 +95,7 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
 
     private void DetectDeath()
     {
-        if (hp <= 0)
+        if (currentHP <= 0)
         {
             Death();
         }

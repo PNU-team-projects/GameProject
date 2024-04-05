@@ -5,6 +5,10 @@ using UnityEngine;
 public class Player : Agent, IWeaponized
 {
     [field: SerializeField] public IWeapon activeWeapon { get; set; }
+
+    public int activePotionNumber = 5;
+    private IPotion activePotion = HealingPotion.Instance;
+
     [SerializeField] private GameObject weaponContainer;
 
 
@@ -43,5 +47,14 @@ public class Player : Agent, IWeaponized
     public void Attack()
     {
         activeWeapon.Attack();
+    }
+
+    public void UsePotion()
+    {
+        if (activePotionNumber > 0)
+        {
+            activePotion.Use(this);
+            activePotionNumber--;
+        }
     }
 }

@@ -449,8 +449,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <speed>k__BackingField: 12
+  <maxHp>k__BackingField: 5
   <hp>k__BackingField: 3
   knockbackTime: 0.2
+  activePotionNumber: 1
   weaponContainer: {fileID: 7772499274804915423}
 --- !u!210 &2071761020302608279
 SortingGroup:
