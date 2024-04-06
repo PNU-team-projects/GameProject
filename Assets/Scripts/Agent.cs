@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Agent : MonoBehaviour, IMovable, IDamageable
+public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
 {
+    [SerializeField] public int maxHP = 3;
+    [SerializeField] private int currentHP;
+
     [field: SerializeField] public float speed { get; set; } = 2f;
-    [field: SerializeField] public int hp { get; set; } = 3;
+
+    [field: SerializeField] public IWeapon activeWeapon { get; set; }
+    [field: SerializeField] public int damageBonus { get; set; } = 0;
+    [SerializeField] private GameObject weaponContainer;
     [SerializeField] protected float knockbackTime = 0.2f;
+
 
     protected bool isDying { get; set; }
     protected bool isKnockedBack { get; set; }
@@ -21,6 +28,10 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         flashEffect = GetComponent<FlashEffect>();
+
+        currentHP = maxHP;
+        // for test
+        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
     }
 
     public void Move(Vector2 movement)
@@ -46,11 +57,28 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
         }
     }
 
+    public int GetCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public void AddHP(int hpToAdd)
+    {
+        int diff = maxHP - currentHP;
+        if (diff >= hpToAdd)
+        {
+            currentHP += hpToAdd;
+        } else
+        {
+            currentHP += diff;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (isDying) return;
 
-        hp -= damage;
+        currentHP -= damage;
         StartCoroutine(flashEffect.Perform(DetectDeath));
     }
 
@@ -74,7 +102,7 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
 
     private void DetectDeath()
     {
-        if (hp <= 0)
+        if (currentHP <= 0)
         {
             Death();
         }
@@ -84,11 +112,17 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
     {
         animator.SetTrigger("Death");
         isDying = true;
+        weaponContainer.SetActive(false);
     }
 
     public void DeathDone()
     {
         isDying = false;
         Destroy(gameObject);
+    }
+
+    public void Attack()
+    {
+        activeWeapon.Attack(this.damageBonus);
     }
 }

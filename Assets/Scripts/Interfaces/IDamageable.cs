@@ -5,8 +5,9 @@ using UnityEngine;
 public interface IDamageable
 {
 
-    int hp { get; set; }
+    int GetCurrentHP();
 
+    void AddHP(int hp);
     void TakeDamage(int damage);
     void GetKnockBack(float force, Transform source);
     void Death();

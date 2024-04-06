@@ -12,7 +12,7 @@ public class MeleeWeapon: MonoBehaviour, IWeapon
 
 
     private Animator animator;
-
+    private int damageBonus = 0;
 
     private void Awake()
     {
@@ -21,7 +21,8 @@ public class MeleeWeapon: MonoBehaviour, IWeapon
     }
 
 
-    public void Attack() {
+    public void Attack(int damageBonus) {
+        this.damageBonus = damageBonus;
         animator.SetTrigger("Attack");
     }
 
@@ -36,7 +37,7 @@ public class MeleeWeapon: MonoBehaviour, IWeapon
     }
 
     private void OnDamage(IDamageable damageable) {
-        damageable.TakeDamage(this.damage);
+        damageable.TakeDamage(this.damage + this.damageBonus);
         damageable.GetKnockBack(this.knockBackForce, transform);
     }
 }

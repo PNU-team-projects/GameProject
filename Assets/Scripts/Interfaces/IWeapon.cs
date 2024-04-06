@@ -7,5 +7,5 @@ public interface IWeapon
     float knockBackForce { get; set; }
     int damage { get; set; }
 
-    void Attack();
+    void Attack(int damageBonus);
 }

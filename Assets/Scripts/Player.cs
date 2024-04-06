@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Agent, IWeaponized
+public class Player : Agent
 {
-    [field: SerializeField] public IWeapon activeWeapon { get; set; }
-    [SerializeField] private GameObject weaponContainer;
+
+    private IPotion activePotion;
+    public float potionCD = 0;
 
 
     private new void Awake()
     {
         base.Awake();
-        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
+        
+        // for test
+        activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
     }
 
      protected override void AdjustPlayerFacingDirection()
@@ -29,19 +32,26 @@ public class Player : Agent, IWeaponized
         }
     }
 
-    public override void Death()
-    {
-        base.Death();
-        weaponContainer.SetActive(false);
-    }
+ 
     public new void DeathDone()
     {
         isDying = false;
         gameObject.SetActive(false);
     }
 
-    public void Attack()
+    private void Update()
     {
-        activeWeapon.Attack();
+        if(potionCD > 0)
+        {
+            potionCD -= Time.deltaTime;
+        }
+    }
+
+    public void UsePotion()
+    {
+        if (potionCD > 0) return;
+
+        activePotion.Use(this);
+        potionCD = activePotion.CD;
     }
 }

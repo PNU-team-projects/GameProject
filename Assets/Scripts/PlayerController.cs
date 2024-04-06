@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerControls.Combat.Attack.started += _ => player.Attack();
+        playerControls.Combat.UsePotion.performed += _ => player.UsePotion();
     }
 
     private void Update()
