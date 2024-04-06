@@ -6,8 +6,7 @@ public class Player : Agent, IWeaponized
 {
     [field: SerializeField] public IWeapon activeWeapon { get; set; }
 
-    public int activePotionNumber = 5;
-    private IPotion activePotion = HealingPotion.Instance;
+    private IPotion activePotion;
 
     [SerializeField] private GameObject weaponContainer;
 
@@ -15,7 +14,10 @@ public class Player : Agent, IWeaponized
     private new void Awake()
     {
         base.Awake();
+        
+        // for test
         activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
+        activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
     }
 
      protected override void AdjustPlayerFacingDirection()
@@ -51,10 +53,6 @@ public class Player : Agent, IWeaponized
 
     public void UsePotion()
     {
-        if (activePotionNumber > 0)
-        {
-            activePotion.Use(this);
-            activePotionNumber--;
-        }
+        activePotion.Use(this);
     }
 }
