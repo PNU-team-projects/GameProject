@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Agent : MonoBehaviour, IMovable, IDamageable
+public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
 {
-    public int maxHP = 3;
+    [SerializeField] public int maxHP = 3;
+    [SerializeField] private int currentHP;
+
     [field: SerializeField] public float speed { get; set; } = 2f;
 
-    [SerializeField] private int currentHP;
+    [field: SerializeField] public IWeapon activeWeapon { get; set; }
+    [field: SerializeField] public int damageBonus { get; set; } = 0;
+    [SerializeField] private GameObject weaponContainer;
     [SerializeField] protected float knockbackTime = 0.2f;
+
 
     protected bool isDying { get; set; }
     protected bool isKnockedBack { get; set; }
@@ -25,6 +30,8 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
         flashEffect = GetComponent<FlashEffect>();
 
         currentHP = maxHP;
+        // for test
+        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
     }
 
     public void Move(Vector2 movement)
@@ -105,11 +112,17 @@ public abstract class Agent : MonoBehaviour, IMovable, IDamageable
     {
         animator.SetTrigger("Death");
         isDying = true;
+        weaponContainer.SetActive(false);
     }
 
     public void DeathDone()
     {
         isDying = false;
         Destroy(gameObject);
+    }
+
+    public void Attack()
+    {
+        activeWeapon.Attack(this.damageBonus);
     }
 }

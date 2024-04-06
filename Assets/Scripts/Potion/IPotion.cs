@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IPotion
 {
+    float CD { get; set; }
+
     void Use(Agent user);
 }

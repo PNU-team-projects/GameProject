@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Agent, IWeaponized
+public class Player : Agent
 {
-    [field: SerializeField] public IWeapon activeWeapon { get; set; }
 
     private IPotion activePotion;
-
-    [SerializeField] private GameObject weaponContainer;
+    public float potionCD = 0;
 
 
     private new void Awake()
@@ -16,7 +14,6 @@ public class Player : Agent, IWeaponized
         base.Awake();
         
         // for test
-        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
         activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
     }
 
@@ -35,24 +32,26 @@ public class Player : Agent, IWeaponized
         }
     }
 
-    public override void Death()
-    {
-        base.Death();
-        weaponContainer.SetActive(false);
-    }
+ 
     public new void DeathDone()
     {
         isDying = false;
         gameObject.SetActive(false);
     }
 
-    public void Attack()
+    private void Update()
     {
-        activeWeapon.Attack();
+        if(potionCD > 0)
+        {
+            potionCD -= Time.deltaTime;
+        }
     }
 
     public void UsePotion()
     {
+        if (potionCD > 0) return;
+
         activePotion.Use(this);
+        potionCD = activePotion.CD;
     }
 }

@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class SpeedPotion : MonoBehaviour, IPotion
 {
-
-    public float increasesSpeed = 0.25f;
-    public float useTime = 5;
-
+    [field: SerializeField] public float CD { get; set; } = 2;
+    [SerializeField] private float increasesSpeed = 0.25f;
+    [SerializeField] private float duration = 5;
 
     public void Use(Agent user)
     {
         float speedToAdd = Mathf.Round(user.speed * increasesSpeed);
 
         user.speed += speedToAdd;
-        StartCoroutine(RemoveSpeedEffect(user, speedToAdd));
+        StartCoroutine(RemoveEffect(user, speedToAdd));
     }
 
-    public IEnumerator RemoveSpeedEffect(Agent user, float speedToRemove) {
+    public IEnumerator RemoveEffect(Agent user, float speedToRemove) {
         
-        yield return new WaitForSeconds(useTime);
+        yield return new WaitForSeconds(duration);
         user.speed -= speedToRemove;
     }
 }

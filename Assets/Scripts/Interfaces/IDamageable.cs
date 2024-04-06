@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
+
     int GetCurrentHP();
 
     void AddHP(int hp);

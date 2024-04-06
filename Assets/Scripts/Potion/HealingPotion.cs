@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealingPotion : MonoBehaviour, IPotion
 {
-
-    public float healsHealth = 0.25f;
+    [field: SerializeField] public float CD { get; set; } = 2;
+    [SerializeField] private float healsHealth = 0.25f;
 
 
     public void Use(Agent user)

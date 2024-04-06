@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7891565361092004742}
   - {fileID: 2040719154251380202}
+  - {fileID: 2408207757316180132}
   m_Father: {fileID: 3654285328882707811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4422121943367174493
@@ -78,6 +79,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healsHealth: 0.25
+--- !u!1 &5016061549797720366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2408207757316180132}
+  - component: {fileID: 1482132295988807196}
+  m_Layer: 0
+  m_Name: DamagePotion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2408207757316180132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016061549797720366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6622863146380438481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1482132295988807196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016061549797720366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e1a10cbeefb7d42af9cce15ea9426f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increasesDamage: 0.5
+  duration: 5
 --- !u!1 &5596977611209885140
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5a11736766a1748bc6fc8eb8d255fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 10
   <speed>k__BackingField: 12
+  <damageBonus>k__BackingField: 1
   currentHP: 0
   knockbackTime: 0.2
   weaponContainer: {fileID: 7772499274804915423}
@@ -709,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increasesSpeed: 0.5
-  useTime: 5
+  duration: 5
 --- !u!1 &7575656542000579218
 GameObject:
   m_ObjectHideFlags: 0
