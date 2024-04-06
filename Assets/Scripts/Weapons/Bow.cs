@@ -11,22 +11,22 @@ public class Bow : MonoBehaviour, IWeapon
 
     public GameObject arrowPrefab;
     public Transform arrowSpawnPoint;
-
-
-    void Update()
-    {
-        MouseFollowingWithOffset();
-    }
-
-    private void MouseFollowingWithOffset()
-    {
-        Vector2 direction = transform.position  - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.right = -direction;
-    }
+    
 
     public void Attack(int damageBonus)
     {
         Projectile projectile = Instantiate(arrowPrefab, arrowSpawnPoint.position, transform.rotation).GetComponent<Projectile>();
         projectile.setStats(damage+damageBonus, knockBackForce, range);
+    }
+
+    public void Target(Vector3 target)
+    {
+        Vector2 direction = transform.position - target;
+        transform.right = -direction;
+    }
+
+    public void Unfocus(Quaternion rotation)
+    {
+        transform.rotation = rotation;
     }
 }

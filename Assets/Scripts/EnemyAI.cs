@@ -40,12 +40,11 @@ public class EnemyAI : MonoBehaviour
         {
             Patrol();
         }
-        
     }
 
     private void Patrol()
     {
-        
+        enemy.Unfocus();
         if (Vector2.Distance(transform.position, randomSpot) < 0.1)
         {
             enemy.Move(Vector2.zero);
@@ -59,7 +58,7 @@ public class EnemyAI : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         } else
-        {
+        {   
             enemy.Move((randomSpot - (Vector2)transform.position).normalized);
         }
     }
@@ -68,6 +67,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (distanceToPlayer < attackDistanceThreshod)
         {
+            if( enemy.activeWeapon is Bow)
+            {
+                enemy.Move(Vector2.zero);
+                enemy.Target(player.transform.position);
+            }
+
             enemy.Attack();
         }
         else
