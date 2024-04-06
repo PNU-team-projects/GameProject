@@ -711,6 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <knockBackForce>k__BackingField: 10
   <damage>k__BackingField: 1
+  <CD>k__BackingField: 0.8
   range: 20
   arrowPrefab: {fileID: 5766047865054557249, guid: 5bb1100e2bec2b541a7b336c7a6a6670, type: 3}
   arrowSpawnPoint: {fileID: 3526017749863441266}

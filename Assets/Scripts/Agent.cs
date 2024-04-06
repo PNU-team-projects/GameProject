@@ -135,6 +135,6 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
         if (attackCD > 0) return;
 
         activeWeapon.Attack(this.damageBonus);
-        attackCD = 1;
+        attackCD = activeWeapon.CD;
     }
 }

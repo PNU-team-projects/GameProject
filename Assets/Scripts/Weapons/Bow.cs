@@ -7,6 +7,7 @@ public class Bow : MonoBehaviour, IWeapon
 {
     [field: SerializeField] public float knockBackForce { get; set; }
     [field: SerializeField] public int damage { get; set; }
+    [field: SerializeField] public float CD { get; set; }
     [SerializeField] public float range = 20;
 
     public GameObject arrowPrefab;

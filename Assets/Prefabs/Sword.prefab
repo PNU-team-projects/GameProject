@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <knockBackForce>k__BackingField: 15
   <damage>k__BackingField: 1
+  <CD>k__BackingField: 0.8
   hitCollider: {fileID: 2188866603416541663}
 --- !u!1 &2238359152739263265
 GameObject:
