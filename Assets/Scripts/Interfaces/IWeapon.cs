@@ -6,6 +6,7 @@ public interface IWeapon
 {
     float knockBackForce { get; set; }
     int damage { get; set; }
+    float CD { get; set; }
 
     void Attack(int damageBonus);
 }

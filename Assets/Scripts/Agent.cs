@@ -13,11 +13,13 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
     [field: SerializeField] public int damageBonus { get; set; } = 0;
     [SerializeField] private GameObject weaponContainer;
     [SerializeField] protected float knockbackTime = 0.2f;
+    
 
 
     protected bool isDying { get; set; }
     protected bool isKnockedBack { get; set; }
     protected Vector2 movement;
+    [SerializeField] private float attackCD = 0;
 
     protected FlashEffect flashEffect;
     protected Rigidbody2D rb;
@@ -32,6 +34,13 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
         currentHP = maxHP;
         // for test
         activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
+    }
+    protected void Update()
+    {
+        if (attackCD > 0)
+        {
+            attackCD -= Time.deltaTime;
+        }
     }
 
     public void Move(Vector2 movement)
@@ -123,6 +132,9 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
 
     public void Attack()
     {
+        if (attackCD > 0) return;
+
         activeWeapon.Attack(this.damageBonus);
+        attackCD = activeWeapon.CD;
     }
 }

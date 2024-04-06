@@ -17,7 +17,18 @@ public class Player : Agent
         activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
     }
 
-     protected override void AdjustPlayerFacingDirection()
+    private new void Update()
+    {
+        base.Update();
+
+        if (potionCD > 0)
+        {
+            potionCD -= Time.deltaTime;
+        }
+    }
+
+
+    protected override void AdjustPlayerFacingDirection()
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
@@ -30,6 +41,12 @@ public class Player : Agent
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+        if (activeWeapon is Bow)
+        {
+            ((Bow)activeWeapon).Target(Camera.main.ScreenToWorldPoint(mousePos));
+
+        }
     }
 
  
@@ -39,13 +56,6 @@ public class Player : Agent
         gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if(potionCD > 0)
-        {
-            potionCD -= Time.deltaTime;
-        }
-    }
 
     public void UsePotion()
     {
