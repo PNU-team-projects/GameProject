@@ -7,6 +7,7 @@ public class ActiveInventory : MonoBehaviour
     private int activeSlotIndexNum = 0;
 
     private PlayerControls playerControls;
+    public static ActiveInventory ActiveInventoryInstance;
 
     private void Awake()
     {
@@ -30,13 +31,43 @@ public class ActiveInventory : MonoBehaviour
 
     private void ToggleActiveHighLight(int indexNum)
     {
-        activeSlotIndexNum = indexNum;
-
-        foreach (Transform inventorySlot in this.transform)
+        if (this == null)
         {
-            inventorySlot.GetChild(0).gameObject.SetActive(false);
+            // Create a new GameObject and add the ActiveInventory script to it
+            GameObject inventoryObject = new GameObject("ActiveInventory");
+            ActiveInventoryInstance = inventoryObject.AddComponent<ActiveInventory>();
+            return;
         }
 
-        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+        activeSlotIndexNum = indexNum;
+
+        // Check if the indexNum is within the range of children count
+        if (this.transform.childCount > indexNum)
+        {
+            // Deactivate all inventory slots
+            foreach (Transform inventorySlot in this.transform)
+            {
+                if (inventorySlot != null && inventorySlot.childCount > 0)
+                {
+                    GameObject childGameObject = inventorySlot.GetChild(0).gameObject;
+                    if (childGameObject != null)
+                    {
+                        childGameObject.SetActive(false);
+                    }
+                }
+            }
+
+            // Activate the selected inventory slot
+            Transform child = this.transform.GetChild(indexNum);
+            if (child != null && child.childCount > 0)
+            {
+                GameObject childGameObject = child.GetChild(0).gameObject;
+                if (childGameObject != null)
+                {
+                    childGameObject.SetActive(true);
+                }
+            }
+        }
     }
+
 }
