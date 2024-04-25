@@ -168,26 +168,52 @@
                     "action": "Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ShopInventory",
+            "id": "f00b61e3-6231-4814-8644-85c53ea9135f",
+            "actions": [
+                {
+                    "name": "NavigateLeft",
+                    "type": "Button",
+                    "id": "e70584b3-8be8-4be8-af22-c07e6cb9e31d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "",
-                    "id": "30340be6-7fec-4aab-b7b3-6a0ece7b003e",
-                    "path": "<Keyboard>/4",
+                    "name": "NavigateRight",
+                    "type": "Button",
+                    "id": "b2202575-48d8-48c6-8b7a-afb4e01d27af",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "",
-                    "processors": "Scale(factor=4)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2456e945-8d33-4966-8615-5a179435e0d1",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
-                    "action": "Keyboard",
+                    "action": "NavigateLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8e59a5a8-a23c-443b-aeb8-9d03fc735a4b",
-                    "path": "<Keyboard>/5",
+                    "id": "c5c2c025-4975-4849-9cb3-18c564401ba8",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
-                    "processors": "Scale(factor=5)",
+                    "processors": "",
                     "groups": "",
-                    "action": "Keyboard",
+                    "action": "NavigateRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
