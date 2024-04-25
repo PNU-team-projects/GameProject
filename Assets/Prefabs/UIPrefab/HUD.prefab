@@ -504,6 +504,9 @@ GameObject:
   - component: {fileID: 3934550424456993310}
   m_Layer: 5
   m_Name: BuyButton
+  - component: {fileID: 3932453840700157301}
+  m_Layer: 5
+  m_Name: GoldCoinContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,6 +700,11 @@ GameObject:
   - component: {fileID: 3932453840700157301}
   m_Layer: 5
   m_Name: GoldCoinContainer
+  - component: {fileID: 1180562111307529487}
+  - component: {fileID: 5444496913524540094}
+  - component: {fileID: 4477548323520650740}
+  m_Layer: 5
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,6 +914,7 @@ RectTransform:
   m_Father: {fileID: 246474615386620958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
+
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -5400,6 +5409,7 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontSize: 20
   m_fontSizeBase: 20
+
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
