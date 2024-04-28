@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - Key
+  - H_potion
+  - R_potion
+  - S_potion
+  - ActiveInventoryTag
   layers:
   - Default
   - TransparentFX
