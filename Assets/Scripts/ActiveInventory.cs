@@ -12,6 +12,7 @@ public class ActiveInventory : MonoBehaviour
     public int health_p = 0;
     public int rage_p = 0;
     public int speed_p = 0;
+    public static ActiveInventory ActiveInventoryInstance;
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class ActiveInventory : MonoBehaviour
         playerControls.Enable();
     }
 
-    private void Update()
+    private void Update(
     {
         // Check the potion counters and set the corresponding child active or inactive
         this.transform.GetChild(0).gameObject.SetActive(health_p > 0);
@@ -43,15 +44,48 @@ public class ActiveInventory : MonoBehaviour
 
     private void ToggleActiveHighLight(int indexNum)
     {
+        if (this == null)
+        {
+            // Create a new GameObject and add the ActiveInventory script to it
+            GameObject inventoryObject = new GameObject("ActiveInventory");
+            ActiveInventoryInstance = inventoryObject.AddComponent<ActiveInventory>();
+            return;
+        }
+
         activeSlotIndexNum = indexNum;
 
-        foreach (Transform inventorySlot in this.transform)
+        // Check if the indexNum is within the range of children count
+        if (this.transform.childCount > indexNum)
         {
-            inventorySlot.GetChild(0).gameObject.SetActive(false);
-        }
+            // Deactivate all inventory slots
+            foreach (Transform inventorySlot in this.transform)
+            {
+                if (inventorySlot != null && inventorySlot.childCount > 0)
+                {
+                    GameObject childGameObject = inventorySlot.GetChild(0).gameObject;
+                    if (childGameObject != null)
+                    {
+                        childGameObject.SetActive(false);
+                    }
+                }
+            }
 
         var activeChild = this.transform.GetChild(indexNum).GetChild(0);
         activeChild.gameObject.SetActive(true);
         activeTag = activeChild.tag;
     }
+}
+            // Activate the selected inventory slot
+            Transform child = this.transform.GetChild(indexNum);
+            if (child != null && child.childCount > 0)
+            {
+                GameObject childGameObject = child.GetChild(0).gameObject;
+                if (childGameObject != null)
+                {
+                    childGameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
 }

@@ -190,26 +190,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Keyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ShopInventory"",
+            ""id"": ""f00b61e3-6231-4814-8644-85c53ea9135f"",
+            ""actions"": [
+                {
+                    ""name"": ""NavigateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""e70584b3-8be8-4be8-af22-c07e6cb9e31d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""30340be6-7fec-4aab-b7b3-6a0ece7b003e"",
-                    ""path"": ""<Keyboard>/4"",
+                    ""name"": ""NavigateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2202575-48d8-48c6-8b7a-afb4e01d27af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
                     ""interactions"": """",
-                    ""processors"": ""Scale(factor=4)"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2456e945-8d33-4966-8615-5a179435e0d1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Keyboard"",
+                    ""action"": ""NavigateLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8e59a5a8-a23c-443b-aeb8-9d03fc735a4b"",
-                    ""path"": ""<Keyboard>/5"",
+                    ""id"": ""c5c2c025-4975-4849-9cb3-18c564401ba8"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
-                    ""processors"": ""Scale(factor=5)"",
+                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Keyboard"",
+                    ""action"": ""NavigateRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -228,6 +254,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
+        // ShopInventory
+        m_ShopInventory = asset.FindActionMap("ShopInventory", throwIfNotFound: true);
+        m_ShopInventory_NavigateLeft = m_ShopInventory.FindAction("NavigateLeft", throwIfNotFound: true);
+        m_ShopInventory_NavigateRight = m_ShopInventory.FindAction("NavigateRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -431,6 +461,60 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public InventoryActions @Inventory => new InventoryActions(this);
+
+    // ShopInventory
+    private readonly InputActionMap m_ShopInventory;
+    private List<IShopInventoryActions> m_ShopInventoryActionsCallbackInterfaces = new List<IShopInventoryActions>();
+    private readonly InputAction m_ShopInventory_NavigateLeft;
+    private readonly InputAction m_ShopInventory_NavigateRight;
+    public struct ShopInventoryActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ShopInventoryActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NavigateLeft => m_Wrapper.m_ShopInventory_NavigateLeft;
+        public InputAction @NavigateRight => m_Wrapper.m_ShopInventory_NavigateRight;
+        public InputActionMap Get() { return m_Wrapper.m_ShopInventory; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShopInventoryActions set) { return set.Get(); }
+        public void AddCallbacks(IShopInventoryActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ShopInventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ShopInventoryActionsCallbackInterfaces.Add(instance);
+            @NavigateLeft.started += instance.OnNavigateLeft;
+            @NavigateLeft.performed += instance.OnNavigateLeft;
+            @NavigateLeft.canceled += instance.OnNavigateLeft;
+            @NavigateRight.started += instance.OnNavigateRight;
+            @NavigateRight.performed += instance.OnNavigateRight;
+            @NavigateRight.canceled += instance.OnNavigateRight;
+        }
+
+        private void UnregisterCallbacks(IShopInventoryActions instance)
+        {
+            @NavigateLeft.started -= instance.OnNavigateLeft;
+            @NavigateLeft.performed -= instance.OnNavigateLeft;
+            @NavigateLeft.canceled -= instance.OnNavigateLeft;
+            @NavigateRight.started -= instance.OnNavigateRight;
+            @NavigateRight.performed -= instance.OnNavigateRight;
+            @NavigateRight.canceled -= instance.OnNavigateRight;
+        }
+
+        public void RemoveCallbacks(IShopInventoryActions instance)
+        {
+            if (m_Wrapper.m_ShopInventoryActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IShopInventoryActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ShopInventoryActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ShopInventoryActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ShopInventoryActions @ShopInventory => new ShopInventoryActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -443,5 +527,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IInventoryActions
     {
         void OnKeyboard(InputAction.CallbackContext context);
+    }
+    public interface IShopInventoryActions
+    {
+        void OnNavigateLeft(InputAction.CallbackContext context);
+        void OnNavigateRight(InputAction.CallbackContext context);
     }
 }
