@@ -47,8 +47,40 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<PlayerController>())
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player)
         {
+            // Find the GameObject with the ActiveInventory script using its tag
+            GameObject activeInventoryObject = GameObject.FindWithTag("ActiveInventoryTag");
+            ActiveInventory activeInventory = null;
+            if (activeInventoryObject != null)
+            {
+                activeInventory = activeInventoryObject.GetComponent<ActiveInventory>();
+            }
+
+            if (gameObject.tag == "Key")
+            {
+                player.Keys++;
+            }
+            else if (gameObject.tag == "Coin")
+            {
+                player.Coins++;
+            }
+            else if (activeInventory != null) // Check if activeInventory is not null
+            {
+                if (gameObject.tag == "H_potion")
+                {
+                    activeInventory.health_p++;
+                }
+                else if (gameObject.tag == "R_potion")
+                {
+                    activeInventory.rage_p++;
+                }
+                else if (gameObject.tag == "S_potion")
+                {
+                    activeInventory.speed_p++;
+                }
+            }
             Destroy(gameObject);
         }
     }

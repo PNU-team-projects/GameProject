@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
 {
     [SerializeField] public int maxHP = 3;
-    [SerializeField] private int currentHP;
+    [SerializeField] public int currentHP;
 
     [field: SerializeField] public float speed { get; set; } = 2f;
 
@@ -13,7 +13,7 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
     [field: SerializeField] public int damageBonus { get; set; } = 0;
     [SerializeField] private GameObject weaponContainer;
     [SerializeField] protected float knockbackTime = 0.2f;
-    
+
 
 
     protected bool isDying { get; set; }
@@ -32,7 +32,6 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
         flashEffect = GetComponent<FlashEffect>();
 
         currentHP = maxHP;
-        // for test
         activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
     }
     protected void Update()
@@ -41,6 +40,7 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
         {
             attackCD -= Time.deltaTime;
         }
+        activeWeapon = weaponContainer.GetComponentInChildren<IWeapon>();
     }
 
     public void Move(Vector2 movement)
@@ -77,7 +77,8 @@ public abstract class Agent : MonoBehaviour, IDamageable, IMovable, IWeaponized
         if (diff >= hpToAdd)
         {
             currentHP += hpToAdd;
-        } else
+        }
+        else
         {
             currentHP += diff;
         }

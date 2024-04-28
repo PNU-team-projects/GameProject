@@ -5,8 +5,13 @@ using UnityEngine;
 public class ActiveInventory : MonoBehaviour
 {
     private int activeSlotIndexNum = 0;
-
     private PlayerControls playerControls;
+    public string activeTag; // Added variable to store the tag
+
+    // Health, Rage, Speed potions counters
+    public int health_p = 0;
+    public int rage_p = 0;
+    public int speed_p = 0;
     public static ActiveInventory ActiveInventoryInstance;
 
     private void Awake()
@@ -22,6 +27,14 @@ public class ActiveInventory : MonoBehaviour
     private void OnEnable()
     {
         playerControls.Enable();
+    }
+
+    private void Update(
+    {
+        // Check the potion counters and set the corresponding child active or inactive
+        this.transform.GetChild(0).gameObject.SetActive(health_p > 0);
+        this.transform.GetChild(1).gameObject.SetActive(rage_p > 0);
+        this.transform.GetChild(2).gameObject.SetActive(speed_p > 0);
     }
 
     private void ToggleActiveSlot(int numValue)
@@ -57,6 +70,11 @@ public class ActiveInventory : MonoBehaviour
                 }
             }
 
+        var activeChild = this.transform.GetChild(indexNum).GetChild(0);
+        activeChild.gameObject.SetActive(true);
+        activeTag = activeChild.tag;
+    }
+}
             // Activate the selected inventory slot
             Transform child = this.transform.GetChild(indexNum);
             if (child != null && child.childCount > 0)
