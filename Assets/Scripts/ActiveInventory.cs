@@ -29,7 +29,7 @@ public class ActiveInventory : MonoBehaviour
         playerControls.Enable();
     }
 
-    private void Update(
+    private void Update()
     {
         // Check the potion counters and set the corresponding child active or inactive
         this.transform.GetChild(0).gameObject.SetActive(health_p > 0);
@@ -70,11 +70,6 @@ public class ActiveInventory : MonoBehaviour
                 }
             }
 
-        var activeChild = this.transform.GetChild(indexNum).GetChild(0);
-        activeChild.gameObject.SetActive(true);
-        activeTag = activeChild.tag;
-    }
-}
             // Activate the selected inventory slot
             Transform child = this.transform.GetChild(indexNum);
             if (child != null && child.childCount > 0)
@@ -85,6 +80,10 @@ public class ActiveInventory : MonoBehaviour
                     childGameObject.SetActive(true);
                 }
             }
+
+            var activeChild = this.transform.GetChild(indexNum).GetChild(0);
+            activeChild.gameObject.SetActive(true);
+            activeTag = activeChild.tag;
         }
     }
 
