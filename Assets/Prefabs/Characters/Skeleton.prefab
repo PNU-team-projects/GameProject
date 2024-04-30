@@ -292,10 +292,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cf2d11b77c8fc4e8321c936ec4d148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <speed>k__BackingField: 2
-  <hp>k__BackingField: 3
-  knockbackTime: 0.2
+  maxHP: 3
+  currentHP: 0
+  <speed>k__BackingField: 3
+  <damageBonus>k__BackingField: 1
   weaponContainer: {fileID: 709041301666807894}
+  knockbackTime: 0.2
+  attackCD: 0
 --- !u!114 &8435410952521710078
 MonoBehaviour:
   m_ObjectHideFlags: 0

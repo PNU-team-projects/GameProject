@@ -291,10 +291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cf2d11b77c8fc4e8321c936ec4d148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 4
+  currentHP: 0
   <speed>k__BackingField: 2
-  <hp>k__BackingField: 3
-  knockbackTime: 0.2
+  <damageBonus>k__BackingField: 2
   weaponContainer: {fileID: 1395964774272738700}
+  knockbackTime: 0.2
+  attackCD: 0
 --- !u!114 &6453389888712889002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +380,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 5596634589631923545, guid: 501f094f3cbe8e24d9440e44c90418d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596634589631923545, guid: 501f094f3cbe8e24d9440e44c90418d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934721117572182440, guid: 501f094f3cbe8e24d9440e44c90418d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2452868899569839818, guid: 1b1f5964b5f97e44086477929220749b, type: 3}
     - target: {fileID: 5934721117572182440, guid: 501f094f3cbe8e24d9440e44c90418d8, type: 3}
       propertyPath: m_SortingOrder
       value: 1

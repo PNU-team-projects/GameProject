@@ -4204,6 +4204,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 700553059969513370, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
+      propertyPath: attackCD
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 700553059969513370, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
+      propertyPath: <damageBonus>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1588558443523698984, guid: d2a39b4ffad2a94458715cca5db8a829, type: 3}
       propertyPath: 'spots.Array.data[0]'
       value: 

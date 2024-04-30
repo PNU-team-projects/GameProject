@@ -278,8 +278,8 @@ MonoBehaviour:
   - {fileID: 0}
   timeToWait: 3
   player: {fileID: 5187658463096511664, guid: 77f33d8f6d0316144b37d3a4a2ec76be, type: 3}
-  chaseDistanceThreshold: 6
-  attackDistanceThreshod: 6
+  chaseDistanceThreshold: 12
+  attackDistanceThreshod: 10
 --- !u!114 &700553059969513370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,10 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cf2d11b77c8fc4e8321c936ec4d148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 2
   currentHP: 0
   <speed>k__BackingField: 2
-  <damageBonus>k__BackingField: 0
+  <damageBonus>k__BackingField: 3
   weaponContainer: {fileID: 1022904920660427618}
   knockbackTime: 0.2
   attackCD: 0
