@@ -7,7 +7,7 @@ public class Lever : MonoBehaviour
     public Door door;
     public KeyCode leverKeyCode = KeyCode.E;
     public LeverState currentState = LeverState.Closed;
-    public bool playerNearby = false;
+    private bool playerNearby = false;
     private Animator animator;
 
     private void Awake()
