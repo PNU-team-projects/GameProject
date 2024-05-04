@@ -6,7 +6,7 @@ public class Lock : MonoBehaviour
 {
     public Door door;
     public KeyCode keyCode = KeyCode.E;
-    public bool playerNearby = false;
+    private bool playerNearby = false;
     public Sprite openedSprite;
 
     private SpriteRenderer spriteRenderer;
