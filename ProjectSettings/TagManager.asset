@@ -10,6 +10,8 @@ TagManager:
   - R_potion
   - S_potion
   - ActiveInventoryTag
+  - ItemBox
+  - Active
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - enemy_hitbox
   - player_hitbox
-  - 
+  - feet
   - 
   - 
   - 
@@ -49,4 +51,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 82009891
+    locked: 0
+  - name: Ceil
+    uniqueID: 2182220355
     locked: 0
