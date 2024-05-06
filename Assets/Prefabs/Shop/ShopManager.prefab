@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinsTXT: {fileID: 0}
-  player: {fileID: 6623246231016925066, guid: 77f33d8f6d0316144b37d3a4a2ec76be, type: 3}
+  player: {fileID: 0}
   activeInventory: {fileID: 0}
   startingCoins: 1000
-  ShopUI: {fileID: 7047045275760765944, guid: 691e8ff0a101cbf4480d32652864d503, type: 3}
+  ShopUI: {fileID: 0}
