@@ -863,7 +863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469678998389474803, guid: eee663ad0d23c474686a7d81bb8f93cc, type: 3}
       propertyPath: m_Name
-      value: Trader-Wizzard
+      value: Wizzard
       objectReference: {fileID: 0}
     - target: {fileID: 6166586748223577341, guid: eee663ad0d23c474686a7d81bb8f93cc, type: 3}
       propertyPath: m_Enabled
