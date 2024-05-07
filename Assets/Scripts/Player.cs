@@ -30,6 +30,7 @@ public class Player : Agent
         {
             potionCD -= Time.deltaTime;
         }
+
         // Check the tag and assign the corresponding potion
         var activeInventory = activeInventoryObject.GetComponent<ActiveInventory>();
         if (activeInventory != null)
@@ -39,16 +40,29 @@ public class Player : Agent
             {
                 case "H_potion":
                     activePotion = gameObject.GetComponentInChildren<HealingPotion>();
+                    if (activeInventory.health_p <= 0) // Check if health potion count reaches 0
+                    {
+                        activeInventory.activeTag = null; // Set Active tag to "none"
+                    }
                     break;
                 case "R_potion":
                     activePotion = gameObject.GetComponentInChildren<DamagePotion>();
+                    if (activeInventory.rage_p <= 0) // Check if rage potion count reaches 0
+                    {
+                        activeInventory.activeTag = null; // Set Active tag to "none"
+                    }
                     break;
                 case "S_potion":
                     activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
+                    if (activeInventory.speed_p <= 0) // Check if speed potion count reaches 0
+                    {
+                        activeInventory.activeTag = null; // Set Active tag to "none"
+                    }
                     break;
             }
         }
     }
+
 
     protected override void AdjustPlayerFacingDirection()
     {
@@ -96,14 +110,29 @@ public class Player : Agent
             if (activePotion is HealingPotion)
             {
                 activeInventory.health_p--;
+                if (activeInventory.health_p <= 0) // Check if health potion count reaches 0
+                {
+                    activeInventory.health_p = 0;
+                    activeInventory.activeTag = null; // Set Active tag to "none"
+                }
             }
             else if (activePotion is DamagePotion)
             {
                 activeInventory.rage_p--;
+                if (activeInventory.rage_p <= 0) // Check if rage potion count reaches 0
+                {
+                    activeInventory.rage_p = 0;
+                    activeInventory.activeTag = null; // Set Active tag to "none"
+                }
             }
             else if (activePotion is SpeedPotion)
             {
                 activeInventory.speed_p--;
+                if (activeInventory.speed_p <= 0) // Check if speed potion count reaches 0
+                {
+                    activeInventory.speed_p = 0;
+                    activeInventory.activeTag = null; // Set Active tag to "none"
+                }
             }
         }
     }

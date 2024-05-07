@@ -11,15 +11,12 @@ public class ShopManagerScript : MonoBehaviour
     public int[,] shopItems = new int[5, 5];
     public ActiveInventory activeInventory; // Додайте посилання на ActiveInventory
 
-    public int startingCoins = 100;
     public static ShopManagerScript instance;
 
     public GameObject ShopUI;
 
 void Start()
 {
-    // Ініціалізуємо кількість монет гравця
-    player.Coins = startingCoins;
 
      // Ініціалізуйте ActiveInventoryInstance, якщо він ще не ініціалізований
     if (activeInventory == null)
@@ -39,11 +36,11 @@ shopItems [1, 4] = 4;
 
 //Price
 
-shopItems [2, 1] = 1;
+shopItems [2, 1] = 10;
 
-shopItems [2, 2] = 2;
+shopItems [2, 2] = 10;
 
-shopItems [2, 3] = 3;
+shopItems [2, 3] = 10;
 
 shopItems [2, 4] = 4;
 
