@@ -843,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469678998389474803, guid: 8cedd85668c499347a9e74cb0ecda7d5, type: 3}
       propertyPath: m_Name
-      value: Trader-Wizzard
+      value: Trader_Wizzard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
