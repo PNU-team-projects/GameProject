@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 557640642601920998}
   - component: {fileID: 6401334567236221872}
   m_Layer: 0
-  m_Name: Trader-Wizzard
+  m_Name: Wizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
