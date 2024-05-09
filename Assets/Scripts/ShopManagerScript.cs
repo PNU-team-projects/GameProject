@@ -8,51 +8,61 @@ public class ShopManagerScript : MonoBehaviour
     public TextMeshProUGUI CoinsTXT;
     public Player player;
 
-    public int[,] shopItems = new int[5, 5];
+    public int[,] shopItems = new int[6, 6];
     public ActiveInventory activeInventory; // Додайте посилання на ActiveInventory
 
+    public int startingCoins = 100;
     public static ShopManagerScript instance;
 
     public GameObject ShopUI;
 
-void Start()
-{
-
-     // Ініціалізуйте ActiveInventoryInstance, якщо він ще не ініціалізований
-    if (activeInventory == null)
+    void Start()
     {
-        activeInventory = Object.FindFirstObjectByType<ActiveInventory>();
-    }
+        // Ініціалізуємо кількість монет гравця
+        player.Coins = startingCoins;
+
+        // Ініціалізуйте ActiveInventoryInstance, якщо він ще не ініціалізований
+        if (activeInventory == null)
+        {
+            activeInventory = Object.FindFirstObjectByType<ActiveInventory>();
+        }
 
         //ID's
 
-shopItems [1, 1] = 1;
+        shopItems[1, 1] = 1;
 
-shopItems [1, 2] = 2;
+        shopItems[1, 2] = 2;
 
-shopItems [1, 3] = 3;
+        shopItems[1, 3] = 3;
 
-shopItems [1, 4] = 4;
+        shopItems[1, 4] = 4;
 
-//Price
+        shopItems[1, 5] = 5;
 
-shopItems [2, 1] = 10;
 
-shopItems [2, 2] = 10;
+        //Price
 
-shopItems [2, 3] = 10;
+        shopItems[2, 1] = 1;
 
-shopItems [2, 4] = 4;
+        shopItems[2, 2] = 2;
 
-//Quantity
+        shopItems[2, 3] = 3;
 
-shopItems [3, 1] = 0;
+        shopItems[2, 4] = 4;
 
-shopItems [3, 2] = 0;
+        shopItems[2, 5] = 5;
 
-shopItems [3, 3] = 0;
+        //Quantity
 
-shopItems [3, 4] = 0;
+        shopItems[3, 1] = 0;
+
+        shopItems[3, 2] = 0;
+
+        shopItems[3, 3] = 0;
+
+        shopItems[3, 4] = 0;
+
+        shopItems[3, 5] = 0;
 
 
         // Оновлення тексту кількості монет
@@ -67,7 +77,7 @@ shopItems [3, 4] = 0;
     }
 
     //покупки предметів у магазині
-   public void Buy()
+    public void Buy()
     {
         GameObject ButtonRef = EventSystem.current.currentSelectedGameObject;
 
@@ -82,7 +92,7 @@ shopItems [3, 4] = 0;
             UpdatePotionCount(ButtonRef);
         }
     }
- int GetItemPrice(GameObject button)
+    int GetItemPrice(GameObject button)
     {
         int itemID = button.GetComponent<ButtonInfo>().ItemID;
         return shopItems[2, itemID];
@@ -115,27 +125,41 @@ shopItems [3, 4] = 0;
             case 3: // Якщо куплено предмет з індексом 3
                 activeInventory.speed_p++; // зілля швидкості +1
                 break;
+            case 4: // Якщо куплено предмет з індексом 4
+                    // Збільшення максимального здоров'я на 5
+                player.maxHP += 5;
+                // Встановлення поточного здоров'я рівним новому значенню максимального
+                player.currentHP = player.maxHP;
+                break;
+            case 5: // Якщо куплено предмет з індексом 5
+                player.damageBonus += 1; // збільшення урону персонажа на 1
+                break;
             default:
                 break;
         }
     }
-private void Awake() {
+    private void Awake()
+    {
 
-    if (instance == null) {
+        if (instance == null)
+        {
 
-        instance = this;
+            instance = this;
 
-    } else {
+        }
+        else
+        {
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    DontDestroyOnLoad(gameObject);
-}
+    public void ToggleShop()
+    {
 
-public void ToggleShop() {
-
-    ShopUI.SetActive(!ShopUI.activeSelf);
+        ShopUI.SetActive(!ShopUI.activeSelf);
 
     }
 
