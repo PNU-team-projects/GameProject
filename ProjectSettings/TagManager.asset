@@ -12,6 +12,7 @@ TagManager:
   - ActiveInventoryTag
   - ItemBox
   - Active
+  - Event
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Ceil
     uniqueID: 2182220355
+    locked: 0
+  - name: UI
+    uniqueID: 3070658275
     locked: 0
