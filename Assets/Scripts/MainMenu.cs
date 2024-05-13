@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject saveButtonPrefab;
     public Vector2 startingPosition;
     public GameObject saveButtonsContainer;
+    public CanvasGroup loadingCanvas;
 
 
     private void Awake()
@@ -44,6 +45,7 @@ public class MainMenu : MonoBehaviour
             button.transform.parent = saveButtonsContainer.transform;
             button.transform.localPosition = new Vector3(startingPosition.x, startingPosition.y + (-110 * i), 0);
             button.transform.localScale = Vector3.one;
+            button.GetComponent<SaveButton>().loadingCanvas = loadingCanvas;
 
             if (!saves.ContainsKey(i + 1))
             {

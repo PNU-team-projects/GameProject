@@ -21,6 +21,11 @@ public class ExitDoor : Door
         collider.enabled = false;
         initialColor = spriteRender.color;
 
+
+        if (isOpen)
+        {
+            collider.enabled = true;
+        }
     }
 
 

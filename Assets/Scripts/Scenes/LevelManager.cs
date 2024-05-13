@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public int shopSceneIndex = 1;
     public int levelsStartIndex = 2;
+    public bool isInShop = false;
 
     private void Awake()
     {
@@ -25,10 +26,18 @@ public class LevelManager : MonoBehaviour
     public void LoadNextScene()
     {
         SceneManager.LoadScene(levelsStartIndex+currentLevel);
+        isInShop = false;
     }
 
     public void LoadShop()
     {
         SceneManager.LoadScene(shopSceneIndex);
+        isInShop = true;
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        isInShop = false;
     }
 }

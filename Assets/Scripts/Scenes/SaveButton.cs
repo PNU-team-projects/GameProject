@@ -11,6 +11,7 @@ public class SaveButton : MonoBehaviour
     public TextMeshProUGUI labelText;
     public TextMeshProUGUI dateText;
     public GameObject deleteBtn;
+    public CanvasGroup loadingCanvas;
 
     private int index;
     private bool isNewGame = false;
@@ -35,14 +36,37 @@ public class SaveButton : MonoBehaviour
     {
         SaveSystem.instance.selectedSaveIndex = index;
 
+        loadingCanvas.alpha = 0;
+        loadingCanvas.gameObject.SetActive(true);
+        StartCoroutine(OpeningCanvasOpacity());
+
+
+
+    }
+
+    private void LoadLevel()
+    {
         if (isNewGame)
         {
             LevelManager.instance.currentLevel = 0;
             LevelManager.instance.LoadNextScene();
-        } else
+        }
+        else
         {
             LevelManager.instance.LoadShop();
         }
+    }
+
+    private IEnumerator OpeningCanvasOpacity()
+    {
+
+        while (loadingCanvas.alpha < 1)
+        {
+            loadingCanvas.alpha += 0.05f;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        LoadLevel();
 
     }
 

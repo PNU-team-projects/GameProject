@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : Agent
 {
     private IPotion activePotion;
     public float potionCD = 0;
+    public UnityEvent deathEvent;
 
     // Add Coins and Keys variables
     public int Coins = 0;
@@ -18,8 +20,14 @@ public class Player : Agent
     {
         base.Awake();
 
+
         // potion
         //activePotion = gameObject.GetComponentInChildren<SpeedPotion>();
+    }
+    private void Start()
+    {
+        SceneManagerr.instance.player = this;
+        SceneManagerr.instance.OnLevelStart();
     }
 
     private new void Update()
@@ -88,6 +96,7 @@ public class Player : Agent
     {
         isDying = false;
         gameObject.SetActive(false);
+        deathEvent?.Invoke();
     }
 
     public void UsePotion()
