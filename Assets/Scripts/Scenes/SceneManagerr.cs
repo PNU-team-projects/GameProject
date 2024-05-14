@@ -133,7 +133,7 @@ public class SceneManagerr : MonoBehaviour
     private IEnumerator OpeningCanvasOpacity()
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         while (canvas.alpha > 0)
         {
@@ -158,7 +158,7 @@ public class SceneManagerr : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             LevelManager.instance.LoadShop();
         }
     }
