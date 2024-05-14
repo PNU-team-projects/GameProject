@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
 
-    protected bool isOpen = false;
+    public bool isOpen = false;
 
 
     public virtual void Open()

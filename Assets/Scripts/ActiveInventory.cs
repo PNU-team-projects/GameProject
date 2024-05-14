@@ -47,9 +47,9 @@ public class ActiveInventory : MonoBehaviour
         if (this == null)
         {
             // Create a new GameObject and add the ActiveInventory script to it
-            GameObject inventoryObject = new GameObject("ActiveInventory");
-            ActiveInventoryInstance = inventoryObject.AddComponent<ActiveInventory>();
-            return;
+            //GameObject inventoryObject = new GameObject("ActiveInventory");
+            //ActiveInventoryInstance = inventoryObject.AddComponent<ActiveInventory>();
+            //return;
         }
 
         activeSlotIndexNum = indexNum;

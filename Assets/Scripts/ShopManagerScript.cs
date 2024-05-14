@@ -19,7 +19,7 @@ public class ShopManagerScript : MonoBehaviour
     void Start()
     {
         // Ініціалізуємо кількість монет гравця
-        player.Coins = startingCoins;
+        //player.Coins = startingCoins;
 
         // Ініціалізуйте ActiveInventoryInstance, якщо він ще не ініціалізований
         if (activeInventory == null)
@@ -153,7 +153,7 @@ public class ShopManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void ToggleShop()

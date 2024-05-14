@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 
@@ -10,7 +11,7 @@ public class ExitDoor : Door
     private Color initialColor;
 
     public SpriteRenderer spriteRender;
-    public event Action exitDoorEvent;
+    public UnityEvent exitDoorEvent;
 
     private Collider2D collider;
 
@@ -20,6 +21,11 @@ public class ExitDoor : Door
         collider.enabled = false;
         initialColor = spriteRender.color;
 
+
+        if (isOpen)
+        {
+            collider.enabled = true;
+        }
     }
 
 
