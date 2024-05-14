@@ -1,0 +1,1 @@
+{"level":3,"coins":1,"keys":1,"hp":50,"damageBonus":7,"healPotions":4,"ragePotions":5,"speedPotions":0}
