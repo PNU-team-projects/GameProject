@@ -42,15 +42,15 @@ public class ShopManagerScript : MonoBehaviour
 
         //Price
 
-        shopItems[2, 1] = 1;
+        shopItems[2, 1] = 5;
 
-        shopItems[2, 2] = 2;
+        shopItems[2, 2] = 3;
 
         shopItems[2, 3] = 3;
 
-        shopItems[2, 4] = 4;
+        shopItems[2, 4] = 10;
 
-        shopItems[2, 5] = 5;
+        shopItems[2, 5] = 10;
 
         //Quantity
 
